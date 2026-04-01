@@ -1,46 +1,46 @@
-import React, { useState } from 'react';
-import './App.css'; // Preserving the premium styling previously built
+import React from "react";
 
 const getColor = (value) => {
-  const hue = (value / 100) * 120;
-  return `hsl(${hue}, 85%, 55%)`;
+  const red = 255 - Math.floor((value / 100) * 255);
+  const green = Math.floor((value / 100) * 255);
+  return `rgb(${red}, ${green}, 0)`;
 };
 
 const Heatmap = ({ data }) => {
-  const [hoveredCell, setHoveredCell] = useState(null);
-
-  if (!data || !data.length) return null;
-
   return (
-    <div className="heatmap-wrapper" style={{ margin: '30px auto' }}>
-      <div className="heatmap-grid" onMouseLeave={() => setHoveredCell(null)}>
-        {data.map((row, rowIndex) => (
-          row.map((cellValue, colIndex) => {
-            const id = `${rowIndex}-${colIndex}`;
-            const isHovered = hoveredCell === id;
-            const cellColor = getColor(cellValue);
-            
-            return (
-              <div
-                key={id}
-                className={`heatmap-cell ${isHovered ? 'hovered' : ''}`}
-                style={{ backgroundColor: cellColor }}
-                onMouseEnter={() => setHoveredCell(id)}
-              >
-                {isHovered && (
-                  <div 
-                    className="tooltip" 
-                    style={{ '--tooltip-color': cellColor }}
-                  >
-                    <span className="tooltip-value">{cellValue}</span>
-                    <span className="tooltip-coords">Row {rowIndex + 1} • Col {colIndex + 1}</span>
-                  </div>
-                )}
-              </div>
-            );
-          })
-        ))}
-      </div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(10, 40px)",
+        gap: "5px",
+        justifyContent: "center"
+      }}
+    >
+      {data.flat().map((value, index) => (
+        <div
+          key={index}
+          title={`Value: ${value}`}
+          style={{
+            width: "40px",
+            height: "40px",
+            backgroundColor: getColor(value),
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "12px",
+            color: "#000",
+            transition: "transform 0.2s"
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.2)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        >
+          {value}
+        </div>
+      ))}
     </div>
   );
 };
