@@ -1,16 +1,29 @@
-# React + Vite
+# Data Density Heatmap Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a prototype implementation of a data density heatmap visualization tool, developed as part of my GSoC 2026 preparation.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- Heatmap grid visualization (10x10)
+- Data values ranging from 0 to 100
+- Color scale from low (red) to high (green)
+- Hover tooltip to display values
+- Clean and simple UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠 Tech Stack
+- React.js
+- JavaScript
+- CSS
 
-## React Compiler
+## 📊 Purpose
+This application helps visualize the completeness and distribution of data across datasets. It can assist researchers and developers in understanding data density and identifying missing or sparse data regions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Screenshot
 
-## Expanding the ESLint configuration
+![Heatmap Screenshot](screenshot.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kaundeep11/data-density-heatmap.git
