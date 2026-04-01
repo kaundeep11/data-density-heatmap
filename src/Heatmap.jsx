@@ -7,11 +7,14 @@ const getColor = (value) => {
 };
 
 const Heatmap = ({ data }) => {
+  // Number of rows is accurately represented by the length of the outer array.
+  const cols = data && data.length ? data.length : 10;
+
   return (
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(10, 40px)",
+        gridTemplateColumns: `repeat(${cols}, 40px)`,
         gap: "5px",
         justifyContent: "center"
       }}
@@ -33,9 +36,11 @@ const Heatmap = ({ data }) => {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = "scale(1.2)";
+            e.currentTarget.style.zIndex = "10";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.zIndex = "1";
           }}
         >
           {value}

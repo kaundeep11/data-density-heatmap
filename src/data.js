@@ -1,8 +1,8 @@
-export const generateData = () => {
+export const generateData = (size = 10) => {
   const grid = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < size; i++) {
     const row = [];
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < size; j++) {
       row.push(Math.floor(Math.random() * 101));
     }
     grid.push(row);
